@@ -34,9 +34,17 @@ def fence_encryption(text: str) -> str:
 
 
 def fence_decryption(text: str) -> str:
-    decrypted_text = text[::2]
-    decrypted_text += text[::2]
+    even_i = text[:(len(text) // 2) + 1]
+    odd_i = text[(len(text) // 2):]
+    print(even_i, odd_i)
+
+    decrypted_text = ''
+
+    for i in range((len(text) // 2)):
+        try:
+            decrypted_text += even_i[i]
+            decrypted_text += odd_i[i]
+        except IndexError:
+            decrypted_text += even_i[i]
 
     return decrypted_text
-
-
